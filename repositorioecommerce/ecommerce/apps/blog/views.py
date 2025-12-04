@@ -12,3 +12,7 @@ def Listar_articulos(request):
 
     return render(request, 'blog/listar.html', context)
 
+class Detalle_Articulo_Clase(DetailView):
+    model = Articulo
+    template_name = 'blog/detalle.html'
+

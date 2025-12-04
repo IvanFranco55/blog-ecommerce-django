@@ -1,0 +1,25 @@
+{% extends 'general/base.html' %}
+
+{% block contenido %}
+
+<div>
+    <h1>Detalle del articulo</h1>
+
+    <ul style="display: inline-block;">
+        <li>{{articulo.titulo}}</li>
+
+        {% if articulo.imagen %}
+        <img src="{{articulo.imagen.url}}" width="200" , height="200">
+        {% endif %}
+
+        <li>{{articulo.contenido}} </li>
+        <li>{{articulo.fecha_publicacion}} </li>
+        <li>{{articulo.fecha_actualizacion}} </li>
+        <li>{{articulo.autor}} </li>
+        <li>{{articulo.categoria}} </li>
+
+    </ul>
+
+</div>
+
+{% endblock contenido %}
