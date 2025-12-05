@@ -16,6 +16,9 @@ urlpatterns = [
 
 #categoria
     path('blogxcategoria/<int:pk>', views.Filtro_categoria, name = 'path_filtro_categoria')
-    
-]
+   
+    path('listar/', views.Listar_articulos, name = 'path_listar_articulos'),
 
+    path('detalle/<int:pk>', views.Detalle_Articulo_Clase.as_view(), name = 'path_detalle_articulo')
+
+]
