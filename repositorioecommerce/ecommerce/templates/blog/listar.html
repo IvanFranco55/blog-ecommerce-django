@@ -3,8 +3,10 @@
 {% block contenido %}
 
 <div>
-    <h1>SOY EL QUE LISTA LOS ARTICULOS</h1>
-
+    <div>
+        <h1>SOY EL QUE LISTA LOS ARTICULOS</h1>
+        <a href="{% url 'blog:path_crear_articulo' %}">Crear Articulo</a>
+    </div>
     {% for a in articulos %}
     <ul style="display: inline-block;">
         <li>{{a.titulo}}</li>
