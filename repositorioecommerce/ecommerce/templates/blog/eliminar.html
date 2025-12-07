@@ -1,0 +1,13 @@
+{% extends 'general/base.html' %}
+
+{% block contenido %}
+
+
+<form method="POST">{% csrf_token %}
+    <p>Estas seguro que sea elminar el: "{{articulo}}"? </p>
+    {{form}}
+    <button type="submit">CONFIRMAR</button>
+</form>
+
+
+{% endblock contenido %}

@@ -13,7 +13,9 @@ urlpatterns = [
 
     #MODIFICAR
 
-    path('modificar/<int:pk>', views.Modificar_Articulo.as_view(), name= 'path_modificar_articulo')
+    path('modificar/<int:pk>', views.Modificar_Articulo.as_view(), name= 'path_modificar_articulo'),
     
+    #ELIMINAR
 
+    path('eliminar/<int:pk>', views.Eliminar_Articulo.as_view(), name= 'path_eliminar_articulo')
 ]

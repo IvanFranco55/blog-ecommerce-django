@@ -1,7 +1,7 @@
 from django .shortcuts import render 
 from .models import Articulo, Categoria
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin # Para que solo entren logueados
 from django.urls import reverse_lazy
 from .forms import FormularioCrearArticulo, FormularioModificarArticulo
@@ -36,3 +36,9 @@ class Modificar_Articulo(UpdateView):
     template_name = 'blog/modificar.html'
     form_class = FormularioModificarArticulo
     success_url = reverse_lazy('blog:path_listar_articulos')
+
+class Eliminar_Articulo(DeleteView):
+     model = Articulo
+     template_name = 'blog/eliminar.html'
+     success_url = reverse_lazy('blog:path_listar_articulos')
+

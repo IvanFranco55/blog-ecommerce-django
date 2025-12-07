@@ -16,10 +16,11 @@
         {% endif %}
 
     </ul>
-
-    <a href="{% url 'blog:path_detalle_articulo' a.pk %}">Detalle</a>
-    <a href="{% url 'blog:path_modificar_articulo' a.pk %}">Modificar</a>
-
+    <ul>
+        <li><a href="{% url 'blog:path_detalle_articulo' a.pk %}">Detalle</a></li>
+        <li><a href="{% url 'blog:path_modificar_articulo' a.pk %}">Modificar</a></li>
+        <li><a href="{% url 'blog:path_eliminar_articulo' a.pk %}">Eliminar</a></li>
+    </ul>
     {% endfor %}
 </div>
 
