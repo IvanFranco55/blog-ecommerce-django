@@ -1,10 +1,10 @@
 from django .shortcuts import render 
 from .models import Articulo, Categoria
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin # Para que solo entren logueados
 from django.urls import reverse_lazy
-from .forms import FormularioCrearArticulo
+from .forms import FormularioCrearArticulo, FormularioModificarArticulo
 
 def Listar_articulos(request):
     #ORM
@@ -24,8 +24,15 @@ class Crear_Articulo(CreateView):
     model = Articulo
     template_name = 'blog/crear.html'
     form_class = FormularioCrearArticulo
-    succes_url = reverse_lazy('blog: path_listar.html')
+    success_url = reverse_lazy('blog:path_listar_articulos')
 
     def form_valid(self, form):
             form.instance.autor = self.request.user
             return super().form_valid(form)
+            #esto es para que cuando querramos subir un articulo no pida el campo autor y asigne automaticamente al ususario
+
+class Modificar_Articulo(UpdateView):
+    model = Articulo
+    template_name = 'blog/modificar.html'
+    form_class = FormularioModificarArticulo
+    success_url = reverse_lazy('blog:path_listar_articulos')

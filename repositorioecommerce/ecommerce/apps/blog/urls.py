@@ -9,8 +9,11 @@ urlpatterns = [
     path('detalle/<int:pk>', views.Detalle_Articulo_Clase.as_view(), name = 'path_detalle_articulo'),
 
     #CREAR
-    path('crear/', views.Crear_Articulo.as_view(), name = 'path_crear_articulo')
+    path('crear/', views.Crear_Articulo.as_view(), name = 'path_crear_articulo'),
 
+    #MODIFICAR
+
+    path('modificar/<int:pk>', views.Modificar_Articulo.as_view(), name= 'path_modificar_articulo')
     
 
 ]

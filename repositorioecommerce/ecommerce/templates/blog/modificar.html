@@ -1,0 +1,14 @@
+{% extends 'general/base.html' %}
+
+{% block contenido %}
+
+<div>
+    <h1>Modificar el articulo: {{articulo.titulo}} </h1>
+
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">MODIFICAR</button>
+    </form>
+</div>
+
+{% endblock contenido %}
