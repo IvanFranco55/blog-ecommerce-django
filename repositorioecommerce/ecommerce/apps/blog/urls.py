@@ -6,7 +6,12 @@ app_name = 'blog'
 urlpatterns = [
     #detalle de un producto
     #path('detalle/<int:pk>', views.Detalle_Producto_Clase.as_view(), name = 'path_detalle_producto'),
-    
+
+    #path('listar/', views.Listar_Productos, name = 'path_listar_productos'),
+
+#detalle de un producto
+    #path('detalle/<int:pk>', views.Detalle_Producto_Clase.as_view(), name = 'path_detalle_producto'),
+
 #ABM
     #path('crear/', views.Crear_Producto.as_view(),name = 'path_crear_producto'),
     #path('modificar/<int:pk>', views.Modificar_Producto.as_view(),name = 'path_modificar_producto'),

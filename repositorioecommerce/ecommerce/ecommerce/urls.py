@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('', views.Home, name = 'path_home'),
     path('contacto/', views.Contacto, name = 'path_contacto'),
+
     path('sobre_nosotros/', views.Sobre_Nosotros, name = 'path_sobre_nosotros'),
 
 #enlazamos con las apps
