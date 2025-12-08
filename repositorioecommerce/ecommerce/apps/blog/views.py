@@ -14,6 +14,9 @@ def Listar_articulos(request):
     context = {}
     context['articulos'] = todos_articulos
 
+    categorias = Categoria.objects.all()
+    context['categorias'] = categorias
+
     return render(request, 'blog/listar.html', context)
 
 class Detalle_Articulo_Clase(DetailView):
@@ -42,3 +45,14 @@ class Eliminar_Articulo(DeleteView):
      template_name = 'blog/eliminar.html'
      success_url = reverse_lazy('blog:path_listar_articulos')
 
+def Filtro_Categoria(request, pk):
+    ca = Categoria.objects.get(pk = pk)
+
+    ar = Articulo.objects.filter(categoria = ca)
+    context = {}
+    context['articulos'] = ar
+    categorias = Categoria.objects.all()
+    context['categorias'] = categorias
+
+    return render(request, 'blog/listar.html', context)
+    

@@ -17,5 +17,8 @@ urlpatterns = [
     
     #ELIMINAR
 
-    path('eliminar/<int:pk>', views.Eliminar_Articulo.as_view(), name= 'path_eliminar_articulo')
+    path('eliminar/<int:pk>', views.Eliminar_Articulo.as_view(), name= 'path_eliminar_articulo'),
+
+    path('filtrarxcategoria/<int:pk>', views.Filtro_Categoria, name= 'path_filtrado_categoria')
 ]
+    

@@ -5,7 +5,12 @@
 <div>
     <div>
         <h1>SOY EL QUE LISTA LOS ARTICULOS</h1>
+        Filtrar por rubro:
+        {% for c in categorias %}
+        <a href="{% url 'blog:path_filtrado_categoria' c.pk %}"> {{c.nombre_categoria}} </a>
+        {% endfor %}
         <a href="{% url 'blog:path_crear_articulo' %}">Crear Articulo</a>
+
     </div>
     {% for a in articulos %}
     <ul style="display: inline-block;">
