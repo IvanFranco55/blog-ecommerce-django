@@ -18,6 +18,16 @@
             <a href="{% url 'path_contacto' %}">Contacto</a>
             <a href="{% url 'path_sobre_nosotros' %}">Sobre Nosotros</a>
             <a href="{% url 'blog:path_listar_articulos' %}">Articulos</a>
+            {% if user.is_authenticated %}
+            Hola, {{user.username}}
+            <form method="POST" action="{% url 'usuarios:path_logout' %}">{% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'usuarios:path_login' %}">Login</a>
+            <a href="{% url 'usuarios:path_registro' %}">Registrarse</a>
+            {% endif %}
+
         </div>
 
     </div>
