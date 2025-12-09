@@ -2,15 +2,49 @@
 
 {% block contenido %}
 
-<div>
-    <h1>REGISTRO</h1>
+<div style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 40px 0;">
 
-    <form method="POST">{% csrf_token %}
+    <div class="auth-box">
 
-        {{ form.as_p }}
+        <h2 style="text-align: center; color: white; margin-bottom: 30px;">
+            NUEVO OPERADOR_
+        </h2>
 
-        <button type="submit">REGISTRARSE</button>
-    </form>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                {{ field }}
+
+                {% if field.help_text %}
+                <small style="color: gray; display: block; margin-top: -15px; margin-bottom: 15px;">
+                    {{ field.help_text }}
+                </small>
+                {% endif %}
+
+                {% if field.errors %}
+                <div style="color: #ff4444; font-size: 0.8rem; margin-top: -10px; margin-bottom: 15px;">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-login"
+                style="width: 100%; padding: 12px; font-size: 1.1rem; margin-top: 10px;">
+                > CREAR CUENTA
+            </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+            ¿Ya tienes cuenta?
+            <a href="{% url 'usuarios:path_login' %}" style="color: var(--neon-green);">Ingresar</a>
+        </p>
+
+    </div>
+
 </div>
 
 {% endblock contenido %}
