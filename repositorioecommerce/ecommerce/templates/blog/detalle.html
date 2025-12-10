@@ -19,29 +19,24 @@
         <li>Categoria: {{articulo.categoria}} </li>
 
         <div style="margin-left: 100 px;">
-            <h4>COMENTARIOS DEL SISTEMA_</h4>
+            <h4>COMENTARIOS</h4>
+            {% for c in articulo.comentarios.all %}
+            <div style="margin-bottom: 15px; border-bottom: 1px solid gray; padding-bottom: 10px;">
 
-            <div style="margin-bottom: 30px;">
-                {% for c in articulo.comentarios.all %}
+                <p><strong>{{ c.autor.username }}:</strong> {{ c.contenido }}</p>
+                <small>Fecha: {{ c.fecha_creacion }}</small>
 
-                <div style="border-left: 2px solid var(--neon-green); padding-left: 15px; margin-bottom: 20px;">
+                {% if user == c.autor or user.is_staff %}
+                <br>
+                <a href="{% url 'blog:path_borrar_comentario' c.pk %}" style="color: red; font-size: 0.9rem;">
+                    [Eliminar]
+                </a>
+                {% endif %}
 
-                    <p style="color: #c9d1d9; font-size: 1rem; margin-bottom: 5px;">
-                        {{ c.contenido }}
-                    </p>
-
-                    <small style="color: gray;">
-                        Comentario de: <strong style="color: var(--neon-green);">{{ c.autor.username }}</strong>
-                        el {{ c.fecha_creacion|date:"d/m/Y H:i" }}hs
-                    </small>
-
-                </div>
-
-                {% empty %}
-                <p style="color: gray; font-style: italic;">No hay registros de actividad. Sé el primero en comentar.
-                </p>
-                {% endfor %}
             </div>
+            {% empty %}
+            <p>No hay comentarios aún.</p>
+            {% endfor %}
             <form method="POST" action="{% url 'blog:path_comentar' articulo.pk %}"> {% csrf_token %}
                 <textarea style="width: 400px; height: 200px;" name="texto_comentado"></textarea>
                 <button type="submit">COMENTAR</button>

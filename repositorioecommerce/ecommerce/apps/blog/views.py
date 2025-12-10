@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin # Para que solo entren logueados
 from django.urls import reverse_lazy
 from .forms import FormularioCrearArticulo, FormularioModificarArticulo
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 def Listar_articulos(request):
     #ORM
@@ -105,3 +107,19 @@ def comentar(request, pk):
         articulo = articulo_seleccionado
     )
     return HttpResponseRedirect(reverse_lazy('blog:path_detalle_articulo', kwargs={'pk': pk}))
+
+@login_required
+def borrar_comentario(request, pk):
+    # Buscamos el comentario. Si no existe, da error 404 (lo normal)
+    comentario = get_object_or_404(Comentario, pk=pk)
+    
+    # Guardamos el ID del artículo para volver ahí después
+    id_articulo = comentario.articulo.pk
+
+    # LOGICA SIMPLE:
+    # ¿El usuario logueado es el dueño? O ¿El usuario logueado es Staff?
+    if request.user == comentario.autor or request.user.is_staff:
+        comentario.delete()
+
+    # Volvemos al detalle del artículo
+    return redirect('blog:path_detalle_articulo', pk=id_articulo)
