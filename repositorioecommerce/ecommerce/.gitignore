@@ -12,3 +12,6 @@ venv/
 
 # Archivos de sistema
 .DS_Store
+
+# Ignorar carpeta de subidas (media)
+media/

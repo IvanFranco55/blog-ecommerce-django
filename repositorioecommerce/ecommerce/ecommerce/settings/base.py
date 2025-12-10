@@ -7,11 +7,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
+<<<<<<< HEAD
+=======
+from django.urls import reverse_lazy
+>>>>>>> 5c29aac8efeb3f283a275fa6a57f752884bd4018
 LOGIN_REDIRECT_URL = reverse_lazy('path_home')
 LOGOUT_REDIRECT_URL = reverse_lazy('path_home')
 LOGIN_URL = reverse_lazy('usuarios:path_login')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5c29aac8efeb3f283a275fa6a57f752884bd4018
 # Application definition
 
 INSTALLED_APPS = [

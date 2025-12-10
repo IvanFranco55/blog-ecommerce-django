@@ -2,20 +2,102 @@
 
 {% block contenido %}
 
-<div>
-    <h1>SOY EL QUE LISTA LOS ARTICULOS</h1>
+<div class="blog-container">
 
-    {% for a in articulos %}
-    <ul style="display: inline-block;">
-        <li>{{a.titulo}}</li>
+    <aside class="barra-lateral">
 
-        {% if a.imagen %}
-        <img src="{{a.imagen.url}}" width="200" , height="200">
-        {% endif %}
+        <h3 class="titulo-filtro">PANEL DE CONTROL</h3>
 
-    </ul>
-    <a href="{% url 'blog:path_detalle_articulo' a.pk %}">Detalle</a>
-    {% endfor %}
+        <form method="POST" action="{% url 'blog:path_buscador' %}">
+            {% csrf_token %}
+            <label style="color:var(--neon-green); font-weight:bold;">BÚSQUEDA:</label>
+
+            <div style="margin-top: 5px; margin-bottom: 10px;">
+                <input type="text" name="busqueda" class="input-hacker" placeholder="Escribe el título...">
+            </div>
+
+            <button type="submit" class="btn-login" style="width:100%;">🔎 BUSCAR</button>
+        </form>
+
+        <hr style="border-color: #30363d; margin: 20px 0;">
+
+        <label style="color:var(--neon-green); font-weight:bold; margin-bottom: 10px; display:block;">
+            ORDENAR POR FECHA:
+        </label>
+
+        <div style="display: flex; gap: 10px; flex-direction: column;">
+            <a href="{% url 'blog:path_filtrado_fecha' 'nuevo' %}" class="btn-orden">
+                ⬇️ Más Recientes
+            </a>
+
+            <a href="{% url 'blog:path_filtrado_fecha' 'antiguo' %}" class="btn-orden">
+                ⬆️ Más Antiguos
+            </a>
+        </div>
+
+        <hr style="border-color: #30363d; margin: 20px 0;">
+
+        <label style="color:var(--neon-green); font-weight:bold;">CATEGORÍAS:</label>
+        <div class="dropdown-container" style="margin-top: 5px;">
+            <button class="btn-dropdown">📂 Seleccionar Categoría ▼</button>
+            <div class="dropdown-content">
+                <a href="{% url 'blog:path_listar_articulos' %}">[X] Ver todo</a>
+                {% for c in categorias %}
+                <a href="{% url 'blog:path_filtrado_categoria' c.pk %}">> {{ c.nombre_categoria }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+    </aside>
+
+    <section class="columna-articulos">
+
+        <h1 class="titulo-seccion">ARTICULOS</h1>
+
+        <div class="grilla-articulos">
+
+            {% for a in articulos %}
+
+            <article class="card">
+
+                {% if a.imagen %}
+                <div class="card-img-container">
+                    <img src="{{ a.imagen.url }}" alt="{{ a.titulo }}">
+                </div>
+                {% endif %}
+
+                <div class="card-contenido">
+                    <h3>{{ a.titulo }}</h3>
+
+                    <span class="card-fecha" style="font-size: 0.8em; color: gray;">
+                        {{ a.fecha_publicacion|date:"d/m/Y" }}
+                    </span>
+
+                    <a href="{% url 'blog:path_detalle_articulo' a.pk %}" class="btn-leer">
+                        ACCEDER AL ARTICULO >
+                    </a>
+
+                    <div class="acciones-admin">
+                        <a href="{% url 'blog:path_modificar_articulo' a.pk %}"
+                            style="color: yellow; margin-right: 10px;">
+                            ✏️ Modificar
+                        </a>
+                        <a href="{% url 'blog:path_eliminar_articulo' a.pk %}" style="color: red;">
+                            🗑️ Eliminar
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+
+            {% empty %}
+            <p>No hay artículos cargados en el sistema.</p>
+            {% endfor %}
+
+        </div>
+
+    </section>
+
 </div>
 
 {% endblock contenido %}
