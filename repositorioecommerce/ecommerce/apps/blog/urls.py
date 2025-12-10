@@ -4,7 +4,6 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
-#categoria
     path('listar/', views.Listar_articulos, name = 'path_listar_articulos'),
 
     path('detalle/<int:pk>', views.Detalle_Articulo_Clase.as_view(), name = 'path_detalle_articulo'),
@@ -27,5 +26,4 @@ urlpatterns = [
     path('buscador/', views.Buscador, name='path_buscador'),
     
     path('fecha/<str:orden>/', views.Filtro_Fecha, name='path_filtrado_fecha'),
-
 ]

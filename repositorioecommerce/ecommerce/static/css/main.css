@@ -55,6 +55,8 @@ a {
 
 a:hover {
     color: var(--neon-green);
+    
+    transform: scale(1.25);
 }
 
 .user-panel {
@@ -79,6 +81,7 @@ button {
     border: 1px solid var(--neon-green);
     background: transparent;
     color: var(--neon-green);
+    text-decoration-color: black;
 }
 
 .btn-registro {
@@ -88,6 +91,13 @@ button {
 
 .btn-registro:hover {
     box-shadow: 0 0 10px var(--neon-green);
+    color: rgba(27, 27, 27, 0.541);
+    transform: scale(1.15);
+}
+
+.btn-logout:hover{
+    
+    transform: scale(1.10);
 }
 
 /* =========================================
@@ -124,6 +134,8 @@ button {
 .dropdown-content a:hover {
     background-color: #21262d;
     padding-left: 15px;
+    
+    transform: scale(1.15);
 }
 
 .dropdown-container:hover .dropdown-content {
