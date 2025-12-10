@@ -19,6 +19,10 @@ class Articulo(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+    @property
+    def misComentarios(self):
+        return self.comentarios.all()
 
 class Comentario(models.Model):
     contenido = models.TextField()
@@ -29,3 +33,7 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f"Comentario de: {self.autor.username}"
+    
+    def __str__(self):
+        return f"Comentario de: {self.autor.username}"
+    

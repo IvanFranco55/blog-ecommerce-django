@@ -1,5 +1,5 @@
-from django .shortcuts import render 
-from .models import Articulo, Categoria
+from django .shortcuts import render, HttpResponseRedirect
+from .models import Articulo, Categoria, Comentario
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin # Para que solo entren logueados
@@ -93,3 +93,15 @@ def Filtro_Fecha(request, orden):
     }
     
     return render(request, 'blog/listar.html', context)
+
+def comentar(request, pk):
+    articulo_seleccionado = Articulo.objects.get(pk=pk)
+    usuario_actual = request.user
+    texto_ingresado = request.POST.get('texto_comentado') 
+
+    Comentario.objects.create(
+        contenido = texto_ingresado, 
+        autor = usuario_actual, 
+        articulo = articulo_seleccionado
+    )
+    return HttpResponseRedirect(reverse_lazy('blog:path_detalle_articulo', kwargs={'pk': pk}))

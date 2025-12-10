@@ -27,5 +27,7 @@ urlpatterns = [
     
     path('fecha/<str:orden>/', views.Filtro_Fecha, name='path_filtrado_fecha'),
 
+    path ('comentar/<int:pk>', views.comentar, name= 'path_comentar'),
+
 ]
     
