@@ -284,3 +284,183 @@ button {
     padding: 0;
     margin-bottom: 15px;
 }
+
+/* =========================================
+   DISEÑO PROFESIONAL: NOSOTROS Y CONTACTO
+   ========================================= */
+
+/* CONTENEDOR CENTRAL MAESTRO (Esto soluciona lo del borde izquierdo) */
+.about-container,
+.contacto-wrapper {
+    max-width: 1100px;
+    /* Ancho máximo para que no se estire infinito */
+    margin: 40px auto;
+    /* AUTO centra horizontalmente */
+    padding: 0 20px;
+    /* Margen interno para celulares */
+    width: 100%;
+    /* Ocupa el espacio disponible hasta el max-width */
+    box-sizing: border-box;
+}
+
+/* --- SOBRE NOSOTROS: TARJETAS --- */
+.hero-about {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px;
+    background: radial-gradient(circle, rgba(22, 27, 34, 1) 0%, rgba(13, 17, 23, 0) 70%);
+}
+
+.grid-bloques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.bloque-info {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.bloque-info:hover {
+    border-color: var(--neon-green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 65, 0.1);
+}
+
+.icono-bloque {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.bloque-info h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.bloque-info p {
+    color: #8b949e;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* --- INTEGRANTES (Estilo Credencial) --- */
+.grid-integrantes-simple {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.credencial-member {
+    display: flex;
+    align-items: center;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    padding: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.credencial-member:hover {
+    border-color: var(--neon-green);
+    background-color: #161b22;
+}
+
+.avatar-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #21262d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    border: 1px solid var(--neon-green);
+}
+
+.nombre-member {
+    color: #e6edf3;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+/* --- CONTACTO: PANEL TECH UNIFICADO --- */
+.tech-panel {
+    display: flex;
+    flex-wrap: wrap;
+    /* Para que baje en celulares */
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 16px;
+    overflow: hidden;
+    /* Para que el mapa no se salga de las curvas */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.columna-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.columna-mapa {
+    flex: 1.5;
+    /* El mapa ocupa un poco más */
+    min-width: 300px;
+    min-height: 450px;
+    position: relative;
+    background-color: #0d1117;
+}
+
+/* Estilo de los items de contacto */
+.info-item {
+    margin-bottom: 30px;
+    border-left: 3px solid var(--neon-green);
+    padding-left: 20px;
+}
+
+.label-tech {
+    display: block;
+    color: var(--neon-green);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.info-valor {
+    color: white;
+    font-size: 1.1rem;
+}
+
+.info-valor a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.info-valor a:hover {
+    color: var(--neon-green);
+}
+
+/* Filtro oscuro para el mapa */
+.mapa-filtro {
+    width: 100%;
+    height: 100%;
+    filter: invert(90%) hue-rotate(180deg) contrast(90%) grayscale(20%);
+    border: none;
+}

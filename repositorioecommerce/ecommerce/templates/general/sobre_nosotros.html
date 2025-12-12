@@ -1,57 +1,70 @@
 {% extends 'general/base.html' %}
+{% load static %}
 
 {% block contenido %}
-<div class="nosotros">
-    <section class="hero-about">
+<div class="about-container">
 
-        <h2>Hacking Ético para un Mundo Digital Seguro</h2>
-        <p>Somos un grupo de estudiantes del Informatorio dedicados a la investigación, educación y difusión de las
-            mejores prácticas en ciberseguridad y *Ethical Hacking*.</p>
-        <p class="lema">"Conocimiento sin consentimiento es ilegal. Nuestro compromiso es la ética."</p>
-    </section>
+    <div class="hero-about">
+        <h1 style="font-size: 3.5rem; margin: 0; color: white;">
+            NOSOTROS<span style="color: var(--neon-green);">_G6</span>
+        </h1>
+        <p style="color: #8b949e; letter-spacing: 2px; margin-top: 10px; font-family: monospace;">
+            > SYSTEM STATUS: ONLINE // INFORMATORIO CHACO
+        </p>
+    </div>
 
-    <section class="mision-vision">
-        <div class="tarjeta-valores">
-            <h3><i class="fas fa-shield-alt"></i> Nuestra Misión</h3>
-            <p>Educar y dar a conocer a todas las personas y profesionales en temas sobre seguridad ofensiva y
-                defensiva, proporcionando información precisa y práctica, siempre bajo un marco **legal y ético**
-                estricto.</p>
+    <div class="grid-bloques">
+
+        <div class="bloque-info">
+            <div class="icono-bloque">🛡️</div>
+            <h3>Nuestra Misión</h3>
+            <p>Educar sobre seguridad informática ofensiva y defensiva bajo un estricto marco ético y legal.</p>
         </div>
 
-        <div class="tarjeta-valores">
-            <h3><i class="fas fa-brain"></i> Nuestra Visión</h3>
-            <p>Ser el recurso líder en habla hispana para el aprendizaje de técnicas de *pentesting* y vulnerabilidades,
-                contribuyendo a elevar el estándar de seguridad de las organizaciones y usuarios.</p>
+        <div class="bloque-info">
+            <div class="icono-bloque">🚀</div>
+            <h3>Nuestro Objetivo</h3>
+            <p>Demostrar los conocimientos adquiridos en el curso mediante un desarrollo web funcional y seguro.</p>
         </div>
-    </section>
 
-    <section class="enfoque">
-        <h3>Nuestro Enfoque Ético</h3>
-        <p>El *Ethical Hacking* es una herramienta poderosa que requiere responsabilidad. Nos enfocamos en:</p>
-        <ul>
-            <li><i class="fas fa-gavel"></i> **Legalidad:** Todo el contenido está diseñado para ser usado en entornos
-                controlados y autorizados (laboratorios).</li>
-            <li><i class="fas fa-graduation-cap"></i> **Educación:** Descomponer temas complejos en guías prácticas y
-                fáciles de entender.</li>
-            <li><i class="fas fa-handshake"></i> **Transparencia:** Promover la divulgación responsable de
-                vulnerabilidades.</li>
-        </ul>
-    </section>
-
-    <section class="equipo">
-        <h3>Conoce a los Creadores</h3>
-        <div class="miembro-perfil">
-            <img src="perfil_creador.jpg" alt="Foto del Creador/Editor">
-            <h4>[Tu Nombre o Alias Principal]</h4>
-            <p class="cargo">Investigador de Seguridad & Editor Principal</p>
-            <p>Soy [Tu Nombre/Alias], [Tu Cargo Principal/Certificación]. </p>
-            <div class="social-links">
-                <a href="URL_TU_LINKEDIN" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
-                <a href="URL_TU_TWITTER" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="URL_TU_GITHUB" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-            </div>
+        <div class="bloque-info">
+            <div class="icono-bloque">🤝</div>
+            <h3>El Grupo</h3>
+            <p>Somos estudiantes del Informatorio Chaco, unidos para desarrollar soluciones digitales de alto impacto.
+            </p>
         </div>
-    </section>
+
+    </div>
+
+    <div style="display: flex; align-items: center; margin: 60px 0; color: #30363d;">
+        <hr style="flex: 1; border-color: #30363d;">
+        <span style="padding: 0 15px; color: var(--neon-green); font-weight: bold;">OPERADORES DEL SISTEMA</span>
+        <hr style="flex: 1; border-color: #30363d;">
+    </div>
+
+    <div class="grid-integrantes-simple">
+
+        <div class="credencial-member">
+            <div class="avatar-circle">👤</div>
+            <div class="nombre-member">[TU NOMBRE ACÁ]</div>
+        </div>
+
+        <div class="credencial-member">
+            <div class="avatar-circle">👤</div>
+            <div class="nombre-member">[NOMBRE INTEGRANTE 2]</div>
+        </div>
+
+        <div class="credencial-member">
+            <div class="avatar-circle">👤</div>
+            <div class="nombre-member">[NOMBRE INTEGRANTE 3]</div>
+        </div>
+
+        <div class="credencial-member">
+            <div class="avatar-circle">👤</div>
+            <div class="nombre-member">[NOMBRE INTEGRANTE 4]</div>
+        </div>
+
+    </div>
+
 </div>
-
 {% endblock contenido %}
