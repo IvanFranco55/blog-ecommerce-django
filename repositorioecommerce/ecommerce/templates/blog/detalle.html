@@ -131,15 +131,30 @@
 
                 {% if user == c.autor or user.is_staff %}
                 <div style="margin-top: 15px; text-align: right;">
+
+                    <a href="{% url 'blog:path_editar_comentario' c.pk %}" style="
+                                            color: #ffc107; 
+                                            font-size: 0.8rem; 
+                                            text-decoration: none; 
+                                            border: 1px solid #ffc107; 
+                                            padding: 2px 8px; 
+                                            border-radius: 3px;
+                                            margin-right: 10px;
+                                            transition: 0.3s;
+                                        " onmouseover="this.style.backgroundColor='#ffc107'; this.style.color='black';"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffc107';">
+                        ✎ EDITAR
+                    </a>
+
                     <a href="{% url 'blog:path_borrar_comentario' c.pk %}" style="
-                            color: #ff4444; 
-                            font-size: 0.8rem; 
-                            text-decoration: none; 
-                            border: 1px solid #ff4444; 
-                            padding: 2px 8px; 
-                            border-radius: 3px;
-                            transition: 0.3s;
-                        " onmouseover="this.style.backgroundColor='#ff4444'; this.style.color='white';"
+                                            color: #ff4444; 
+                                            font-size: 0.8rem; 
+                                            text-decoration: none; 
+                                            border: 1px solid #ff4444; 
+                                            padding: 2px 8px; 
+                                            border-radius: 3px;
+                                            transition: 0.3s;
+                                        " onmouseover="this.style.backgroundColor='#ff4444'; this.style.color='white';"
                         onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ff4444';">
                         [X] ELIMINAR DATOS
                     </a>

@@ -139,3 +139,16 @@ def Filtro_Alfabetico(request, orden):
     }
 
     return render(request, 'blog/listar.html', context)
+
+
+class Editar_Comentario(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comentario
+    template_name = 'blog/modificar.html' 
+    fields = ['contenido'] 
+
+    def get_success_url(self):
+        return reverse_lazy('blog:path_detalle_articulo', kwargs={'pk': self.object.articulo.pk})
+
+    def test_func(self):
+        comentario = self.get_object()
+        return self.request.user == comentario.autor or self.request.user.is_staff

@@ -32,5 +32,7 @@ urlpatterns = [
     path('borrar_comentario/<int:pk>/', views.borrar_comentario, name='path_borrar_comentario'),
 
     path('alfabetico/<str:orden>/', views.Filtro_Alfabetico, name='path_filtrado_alfabetico'),
+
+    path('comentario/editar/<int:pk>/', views.Editar_Comentario.as_view(), name='path_editar_comentario'),
 ]
     
