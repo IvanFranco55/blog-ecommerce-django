@@ -451,3 +451,115 @@ button {
     filter: invert(90%) hue-rotate(180deg) contrast(90%) grayscale(20%);
     border: none;
 }
+
+/* =========================================
+   ESTILOS DE AVATAR Y PERFIL (V3.0 - CENTRADO PERFECTO)
+   ========================================= */
+
+/* Círculo de Iniciales */
+.avatar-iniciales {
+    background-color: #0d1117;
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+
+    /* ESTO ARREGLA EL DESCENTRADO: */
+    box-sizing: border-box;
+    /* El borde cuenta dentro del tamaño */
+    width: 100%;
+    /* Se adapta al padre */
+    height: 100%;
+    /* Se adapta al padre */
+}
+
+/* Imagen Real */
+.img-avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--neon-green);
+
+    /* ESTO ARREGLA EL DESCENTRADO: */
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenedor del Avatar en Navbar */
+.avatar-nav-wrapper {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    /* Evita que se aplaste */
+    margin-right: 12px;
+    position: relative;
+    display: flex;
+    /* Centra el contenido interno */
+}
+
+/* Tamaño de letra para el nav */
+.avatar-nav-text {
+    font-size: 0.9rem;
+}
+
+/* Tamaño Grande para el Perfil */
+.avatar-perfil {
+    width: 120px;
+    height: 120px;
+    font-size: 3rem;
+    margin: 0 auto;
+}
+
+/* Botón de Salir */
+.btn-salir-terminal {
+    background: none;
+    border: 1px solid #ff4444;
+    /* Le puse borde para que quede botón botón */
+    border-radius: 4px;
+    color: #ff4444;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.btn-salir-terminal:hover {
+    background-color: #ff4444;
+    color: white;
+}
+
+/* --- INPUT DE ARCHIVO PERSONALIZADO (El truco para borrar el botón feo) --- */
+
+/* 1. Ocultamos el input original feo */
+.input-file-oculto {
+    display: none !important;
+}
+
+/* 2. Estilizamos la etiqueta LABEL para que parezca un botón */
+.btn-file-custom {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d1117;
+    color: var(--neon-green);
+    border: 1px dashed var(--neon-green);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-file-custom:hover {
+    background-color: rgba(0, 255, 65, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    transform: translateY(-2px);
+}

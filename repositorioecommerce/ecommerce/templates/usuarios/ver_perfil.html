@@ -1,0 +1,67 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div style="max-width: 600px; margin: 50px auto; padding: 0 20px;">
+
+    <div
+        style="background-color: #161b22; border: 1px solid var(--neon-green); border-radius: 12px; padding: 40px; text-align: center; box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);">
+
+        <h2 style="color: white; margin-bottom: 30px;">IDENTIDAD DIGITAL</h2>
+
+        <div style="width: 150px; height: 150px; margin: 0 auto 20px auto; position: relative;">
+
+            {% if user.perfil.imagen %}
+            <img src="{{ user.perfil.imagen.url }}" class="img-avatar avatar-perfil"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+            <div class="avatar-iniciales avatar-perfil" style="display: none;">
+                {{ user.username|slice:":2" }}
+            </div>
+            {% else %}
+            <div class="avatar-iniciales avatar-perfil">
+                {{ user.username|slice:":2" }}
+            </div>
+            {% endif %}
+
+        </div>
+
+        <h3 style="color: var(--neon-green); font-family: monospace; font-size: 1.8rem; margin-bottom: 5px;">
+            {{ user.username }}
+        </h3>
+
+        <div
+            style="text-align: left; background-color: #0d1117; padding: 20px; border-radius: 8px; border: 1px solid #30363d;">
+            <p style="color: #c9d1d9; margin-bottom: 10px; font-family: monospace;">
+                <strong style="color: var(--neon-green);">> NOMBRE:</strong>
+                {{ user.first_name }} {{ user.last_name }}
+            </p>
+            <p style="color: #c9d1d9; margin-bottom: 10px; font-family: monospace;">
+                <strong style="color: var(--neon-green);">> EMAIL:</strong>
+                {{ user.email }}
+            </p>
+            <p style="color: #c9d1d9; margin: 0; font-family: monospace;">
+                <strong style="color: var(--neon-green);">> RANGO:</strong>
+                {% if user.is_staff %}
+                <span style="color: #ff4444;">ADMINISTRADOR (ROOT)</span>
+                {% else %}
+                <span>USUARIO ESTÁNDAR</span>
+                {% endif %}
+            </p>
+        </div>
+
+        <hr style="border-color: #30363d; margin: 30px 0;">
+
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="{% url 'usuarios:path_editar_perfil' %}" class="btn-login" style="text-decoration: none;">
+                ✏️ EDITAR DATOS
+            </a>
+            <a href="{% url 'blog:path_listar_articulos' %}"
+                style="color: gray; border: 1px solid gray; padding: 10px 20px; text-decoration: none; font-family: monospace;">
+                VOLVER
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

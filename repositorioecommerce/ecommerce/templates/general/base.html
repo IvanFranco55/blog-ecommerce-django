@@ -13,7 +13,6 @@
 <body>
 
     <header class="header-principal">
-
         <div class="logo-container">
             <img class="logo" src="{% static 'img/logo.png' %}" alt="Logo Blog">
         </div>
@@ -25,21 +24,45 @@
             <a href="{% url 'blog:path_listar_articulos' %}">Artículos</a>
         </nav>
 
-        <div class="user-panel">
+        <div class="user-panel" style="display: flex; align-items: center; gap: 10px;">
+
             {% if user.is_authenticated %}
-            <span style="color: var(--neon-green);">Hola, {{user.username}}</span>
+
+            <a href="{% url 'usuarios:path_ver_perfil' %}"
+                style="display: flex; align-items: center; text-decoration: none; background: #0d1117; border: 1px solid #30363d; padding: 5px 15px 5px 5px; border-radius: 50px;">
+
+                <div style="width: 35px; height: 35px; margin-right: 10px; position: relative;">
+                    {% if user.perfil.imagen %}
+                    <img src="{{ user.perfil.imagen.url }}" class="img-avatar avatar-nav"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="avatar-iniciales avatar-nav" style="display: none;">
+                        {{ user.username|slice:":2" }}
+                    </div>
+                    {% else %}
+                    <div class="avatar-iniciales avatar-nav">
+                        {{ user.username|slice:":2" }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <span style="color: white; font-family: monospace; font-size: 0.9rem;">
+                    HOLA <strong style="color: var(--neon-green);">{{ user.username }}</strong>
+                </span>
+            </a>
 
             <form method="POST" action="{% url 'usuarios:path_logout' %}" style="display: inline;">
                 {% csrf_token %}
-                <button type="submit" class="btn-logout">Logout</button>
+                <button type="submit" class="btn-salir-terminal">
+                    [X] CERRAR SESIÓN
+                </button>
             </form>
 
             {% else %}
             <a href="{% url 'usuarios:path_login' %}" class="btn-login">Iniciar sesión</a>
             <a href="{% url 'usuarios:path_registro' %}" class="btn-registro">Registrarme</a>
             {% endif %}
-        </div>
 
+        </div>
     </header>
 
     <main class="contenedor-contenido">
@@ -47,15 +70,8 @@
         {% endblock contenido %}
     </main>
 
-    <footer class="footer-principal" style="
-        border-top: 1px solid #30363d; 
-        padding: 20px; 
-        text-align: center; 
-        margin-top: auto; 
-        background-color: #0d1117;
-        color: #8b949e;
-        font-size: 0.9rem;
-    ">
+    <footer class="footer-principal"
+        style="border-top: 1px solid #30363d; padding: 20px; text-align: center; margin-top: auto; background-color: #0d1117; color: #8b949e; font-size: 0.9rem;">
         <p style="margin: 0;">
             &copy; 2025 <strong>Grupo 6</strong> | Proyecto Final
             <span style="color: var(--neon-green);">Informatorio Chaco</span>

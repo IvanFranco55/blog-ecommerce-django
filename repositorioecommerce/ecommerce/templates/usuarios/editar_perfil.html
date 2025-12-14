@@ -1,0 +1,91 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div style="max-width: 500px; margin: 60px auto;">
+
+    <div style="
+        background-color: #161b22; 
+        padding: 40px; 
+        border-radius: 10px; 
+        border: 1px solid #30363d; 
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    ">
+        <h2 style="color: white; text-align: center; margin-bottom: 30px;">
+            EDITAR CREDENCIALES_
+        </h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div style="text-align: center; margin-bottom: 30px;">
+
+                <div style="margin-bottom: 15px; display: flex; justify-content: center;">
+                    {% if user.perfil.imagen %}
+                    <img src="{{ user.perfil.imagen.url }}" class="img-avatar avatar-perfil">
+                    {% else %}
+                    <div class="avatar-iniciales avatar-perfil">
+                        {% if user.first_name %}
+                        {{ user.first_name|slice:":1" }}{{ user.last_name|slice:":1" }}
+                        {% else %}
+                        {{ user.username|slice:":2" }}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <input type="file" name="imagen" id="id_imagen" class="input-file-oculto"
+                        onchange="actualizarNombre(this)">
+                    <label for="id_imagen" class="btn-file-custom">
+                        📷 SELECCIONAR NUEVA IMAGEN
+                    </label>
+                    <p id="nombre-archivo"
+                        style="color: gray; font-size: 0.8rem; margin-top: 10px; font-family: monospace;">
+                        Ningún archivo seleccionado
+                    </p>
+                </div>
+            </div>
+
+            <hr style="border-color: #30363d; margin-bottom: 20px;">
+
+            <div style="margin-bottom: 15px;">
+                <label style="color: var(--neon-green); font-weight: bold; font-size: 0.8rem;">> NOMBRE:</label>
+                <input type="text" name="first_name" value="{{ user.first_name }}" class="input-hacker">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="color: var(--neon-green); font-weight: bold; font-size: 0.8rem;">> APELLIDO:</label>
+                <input type="text" name="last_name" value="{{ user.last_name }}" class="input-hacker">
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <label style="color: var(--neon-green); font-weight: bold; font-size: 0.8rem;">> EMAIL:</label>
+                <input type="email" name="email" value="{{ user.email }}" class="input-hacker">
+            </div>
+
+            <button type="submit" class="btn-login" style="width: 100%; margin-bottom: 15px;">
+                GUARDAR CAMBIOS
+            </button>
+
+            <div style="text-align: center;">
+                <a href="{% url 'usuarios:path_ver_perfil' %}"
+                    style="color: #8b949e; text-decoration: none; font-size: 0.9rem;">
+                    [ CANCELAR ]
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    function actualizarNombre(input) {
+        var nombre = input.files[0].name;
+        var texto = document.getElementById('nombre-archivo');
+        texto.innerText = "> Archivo listo: " + nombre;
+        texto.style.color = "var(--neon-green)";
+    }
+</script>
+
+{% endblock %}
