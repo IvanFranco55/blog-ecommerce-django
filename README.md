@@ -44,3 +44,28 @@ Si querés correr este proyecto en tu propia máquina:
    ```bash
    git clone [https://github.com/IvanFranco55/blog-ecommerce-django.git](https://github.com/IvanFranco55/blog-ecommerce-django.git)
    cd blog-ecommerce-django
+Crear un entorno virtual:
+
+Bash
+python -m venv venv
+# En Windows:
+venv\Scripts\activate
+# En Mac/Linux:
+source venv/bin/activate
+Instalar dependencias:
+
+Bash
+pip install -r requirements.txt
+Realizar migraciones:
+
+Bash
+python manage.py migrate
+Correr el servidor:
+
+Bash
+python manage.py runserver
+📸 Capturas de Pantalla
+(Espacio reservado para capturas del Home, el Perfil de Usuario y la vista de Detalle del Artículo)
+
+📫 Contacto
+Ivan Franco - Backend Developer LinkedIn
