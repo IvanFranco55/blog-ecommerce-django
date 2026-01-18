@@ -67,5 +67,4 @@ python manage.py runserver
 📸 Capturas de Pantalla
 (Espacio reservado para capturas del Home, el Perfil de Usuario y la vista de Detalle del Artículo)
 
-📫 Contacto
-Ivan Franco - Backend Developer LinkedIn
+
